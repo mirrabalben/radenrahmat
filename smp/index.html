@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMP RADEN RAHMAT BALONGBENDO | Official Website</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <style>
+        /* --- MODERN ISLAMIC SCHOOL THEME --- */
+        :root {
+            --primary: #006837;
+            /* Emerald Green - Standard NU/Islamic */
+            --primary-dark: #004d29;
+            --primary-light: #e8f5e9;
+            --secondary: #2c3e50;
+            /* Dark Navy */
+            --accent: #f39c12;
+            /* Gold */
+            --accent-glow: rgba(243, 156, 18, 0.3);
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--secondary);
+            background-color: var(--bg-light);
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .navbar-brand {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--white);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+            transition: all 0.3s;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+        }
+
+        .navbar-brand span {
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-link {
+            color: var(--secondary) !important;
+            font-weight: 600;
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary) !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .btn-ppdb-nav {
+            background-color: var(--primary);
+            color: white !important;
+            border-radius: 50px;
+            padding: 10px 25px;
+            box-shadow: 0 5px 15px rgba(0, 104, 55, 0.2);
+            transition: all 0.3s;
+        }
+
+        .btn-ppdb-nav:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 104, 55, 0.3);
+        }
+
+        .btn-ppdb-nav::after {
+            display: none;
+        }
+
+        /* --- HERO --- */
+        .hero-section {
+            padding: 150px 0 100px;
+            background: linear-gradient(rgba(0, 50, 0, 0.8), rgba(0, 50, 0, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1535&auto=format&fit=crop');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* --- FEATURES --- */
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+            height: 100%;
+            border-bottom: 5px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--primary);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            display: inline-block;
+        }
+
+        /* --- INSTAGRAM / GALLERY --- */
+        .instagram-section {
+            background-color: white;
+            padding: 80px 0;
+        }
+
+        .insta-placeholder {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            border-radius: 20px;
+            padding: 3px;
+            /* Gradient border width */
+            margin-top: 30px;
+        }
+
+        .insta-content {
+            background: white;
+            border-radius: 17px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .insta-gallery .col-4 {
+            padding: 5px;
+        }
+
+        .insta-gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .insta-gallery img:hover {
+            transform: scale(1.05);
+            filter: brightness(0.9);
+        }
+
+        /* --- PPDB --- */
+        .ppdb-section {
+            background-color: var(--primary-light);
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .timeline-steps {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .timeline-step {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin: 1rem
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #111;
+            color: #bdc3c7;
+            padding: 60px 0 20px;
+        }
+
+        footer h5 {
+            color: white;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        footer a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="../logo-smp.jpg" alt="Logo SMP" class="me-2 rounded-circle">
+                <div class="d-flex flex-column">
+                    <span>SMP RADEN RAHMAT</span>
+                    <small style="font-size: 0.7rem; font-weight: 400; color: #666;">BALONGBENDO - SIDOARJO</small>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Tentang Kami</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Kegiatan (IG)</a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link btn-ppdb-nav" href="#ppdb"><i class="fas fa-file-pen me-2"></i> PPDB
+                            ONLINE</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a class="btn btn-outline-dark btn-sm rounded-circle" href="../index.html"
+                            title="Kembali ke Portal Utama"><i class="fas fa-arrow-left"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 animate__animated animate__fadeInUp">
+                    <span class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill fw-bold">PENERIMAAN SISWA BARU
+                        2026/2027 DIBUKA!</span>
+                    <h1>Generasi Cerdas,<br>Berkarakter & Berprestasi</h1>
+                    <p class="mx-auto" style="max-width: 700px;">SMP Raden Rahmat Balongbendo berkomitmen mencetak
+                        generasi muda yang unggul dalam IPTEK dan kokoh dalam IMTAQ berlandaskan Ahlussunnah Wal Jamaah.
+                    </p>
+                    <div class="d-flex gap-3 justify-content-center mt-4">
+                        <a href="#ppdb" class="btn btn-warning btn-lg fw-bold rounded-pill px-5 shadow">DAFTAR
+                            SEKARANG</a>
+                        <a href="#about" class="btn btn-outline-light btn-lg rounded-pill px-4">Profil Sekolah</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features / Value Props -->
+    <section id="about" class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h6 class="text-primary fw-bold text-uppercase ls-1">Kenapa Memilih Kami?</h6>
+                <h2 class="fw-bold display-6">Keunggulan SMP Raden Rahmat</h2>
+                <div class="mx-auto mt-3" style="width: 60px; height: 3px; background: var(--primary);"></div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-quran"></i>
+                        </div>
+                        <h4>Tahfidz & Diniyah</h4>
+                        <p class="text-muted">Program unggulan tahfidz Juz 30 dan materi keagamaan mendalam (Fiqh,
+                            Aqidah, Akhlak) untuk membentuk karakter Islami.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4>Berbasis Teknologi</h4>
+                        <p class="text-muted">pembelajaran modern didukung laboratorium komputer, multimedia, dan akses
+                            internet untuk menunjang kompetensi digital.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h4>Ekstrakurikuler Juara</h4>
+                        <p class="text-muted">Beragam kegiatan ekstrakurikuler mulai dari Pramuka, Pagar Nusa, Banjari,
+                            hingga Olahraga untuk menyalurkan bakat siswa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed Section -->
+    <section id="gallery" class="instagram-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <h2 class="fw-bold mb-3">Dokumentasi & Kegiatan</h2>
+                    <p class="text-muted mb-4">Ikuti keseruan dan update terbaru dari kegiatan siswa-siswi SMP Raden
+                        Rahmat melalui Instagram resmi kami.</p>
+
+                    <a href="https://www.instagram.com/osis_smprrahmat/" target="_blank"
+                        class="btn btn-outline-danger rounded-pill px-4 py-2">
+                        <i class="fab fa-instagram me-2"></i> @osis_smprrahmat
+                    </a>
+
+                    <div class="mt-4 p-4 bg-light rounded-3 border-start border-4 border-success">
+                        <h5 class="fw-bold text-success">Prestasi Terbaru</h5>
+                        <p class="mb-0 bg-white p-3 rounded shadow-sm border mt-2">
+                            <i class="fas fa-medal text-warning me-2"></i> Juara 2 Lomba PBB Se-Kabupaten<br>
+                            <i class="fas fa-medal text-warning me-2"></i> Juara 1 Pidato Bahasa Arab
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="insta-placeholder animate__animated animate__fadeInRight">
+                        <div class="insta-content">
+                            <div class="d-flex align-items-center justify-content-center mb-4 text-muted">
+                                <i class="fab fa-instagram fa-3x me-3 text-danger"></i>
+                                <div class="text-start">
+                                    <h5 class="mb-0 fw-bold text-dark">Instagram Feed</h5>
+                                    <small>Terhubung secara langsung</small>
+                                </div>
+                            </div>
+
+                            <!-- Static Grid mimicking Insta Feed -->
+                            <div class="row insta-gallery">
+                                <div class="col-4">
+                                    <img src="https://images.unsplash.com/photo-1577896334698-13c1eed8880f?q=80&w=200&auto=format&fit=crop"
+                                        alt="Kegiatan 1">
+                                </div>
+                                <div class="col-4">
+                                    <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=200&auto=format&fit=crop"
+                                        alt="Kegiatan 2">
+                                </div>
+                                <div class="col-4">
+                                    <img src="https://images.unsplash.com/photo-1560785496-3c9d27877182?q=80&w=200&auto=format&fit=crop"
+                                        alt="Kegiatan 3">
+                                </div>
+                                <div class="col-4">
+                                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=200&auto=format&fit=crop"
+                                        alt="Kegiatan 4">
+                                </div>
+                                <div class="col-4">
+                                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=200&auto=format&fit=crop"
+                                        alt="Kegiatan 5">
+                                </div>
+                                <div class="col-4">
+                                    <img src="https://images.unsplash.com/photo-1427504743055-b71ca3abd3d9?q=80&w=200&auto=format&fit=crop"
+                                        alt="Kegiatan 6">
+                                </div>
+                            </div>
+
+                            <a href="https://www.instagram.com/osis_smprrahmat/" target="_blank"
+                                class="btn btn-primary mt-4 rounded-pill w-100">Lihat Selengkapnya di Instagram <i
+                                    class="fas fa-external-link-alt ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PPDB Section -->
+    <section id="ppdb" class="ppdb-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 animate__animated animate__zoomIn">
+                    <div class="card border-0 shadow-lg overflow-hidden rounded-4">
+                        <div class="card-header bg-success text-white text-center p-4">
+                            <h2 class="fw-bold mb-0">Formulir Pendaftaran Siswa Baru</h2>
+                            <p class="mb-0 opacity-75">Tahun Ajaran 2026/2027</p>
+                        </div>
+                        <div class="card-body p-5 bg-white">
+                            <p class="text-center mb-4 text-muted">Silakan isi data awal berikut untuk terhubung
+                                langsung dengan Panitia PPDB kami via WhatsApp.</p>
+
+                            <form id="form-ppdb">
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Nama Lengkap Siswa</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="fas fa-user"></i></span>
+                                        <input type="text" id="nama" class="form-control form-control-lg"
+                                            placeholder="Masukkan nama lengkap" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">Asal Sekolah (SD/MI)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light"><i class="fas fa-school"></i></span>
+                                        <input type="text" id="sekolah" class="form-control form-control-lg"
+                                            placeholder="Nama asal sekolah" required>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">Nama Orang Tua/Wali</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i
+                                                    class="fas fa-user-friends"></i></span>
+                                            <input type="text" id="ortu" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label fw-bold">No. HP / WhatsApp</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light"><i
+                                                    class="fab fa-whatsapp text-success"></i></span>
+                                            <input type="number" id="hp" class="form-control" placeholder="08......"
+                                                required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-grid mt-4">
+                                    <button type="button" onclick="kirimFormulir()"
+                                        class="btn btn-warning btn-lg fw-bold text-dark shadow-sm">
+                                        <i class="fab fa-whatsapp me-2"></i> KIRIM DATA PENDAFTARAN
+                                    </button>
+                                </div>
+                                <p class="text-center small text-muted mt-3 mb-0">*Data akan dikirim ke WhatsApp Admin
+                                    PPDB SMP Raden Rahmat.</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <img src="../logo-smp.jpg" alt="Logo" width="60" class="mb-3 rounded-circle border border-white">
+                    <h5 class="mb-2">SMP RADEN RAHMAT</h5>
+                    <p class="small">Mencetak generasi berprestasi, berakhlak mulia, dan siap menghadapi tantangan
+                        global dengan landasan Ahlussunnah Wal Jamaah.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Kontak Kami</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2 text-warning"></i> Jl. Raya Balongbendo,
+                            Sidoarjo</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2 text-warning"></i> (031) 896XXXX</li>
+                        <li class="mb-2"><i class="fab fa-whatsapp me-2 text-warning"></i> 0857-0667-3560</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Ikuti Kami</h5>
+                    <div class="d-flex gap-3 social-links">
+                        <a href="https://www.instagram.com/osis_smprrahmat/" target="_blank" class="fs-4"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#" class="fs-4"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="fs-4"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center pt-4 border-top border-secondary mt-3">
+                <small>&copy; 2026 SMP RADEN RAHMAT BALONGBENDO. All Rights Reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function kirimFormulir() {
+            // Nomor Admin SMP
+            const nomorAdmin = "6285706673560";
+
+            const nama = document.getElementById('nama').value;
+            const sekolah = document.getElementById('sekolah').value;
+            const ortu = document.getElementById('ortu').value;
+            const hp = document.getElementById('hp').value;
+
+            if (nama && sekolah && ortu && hp) {
+                const pesan = `Halo Admin PPDB SMP Raden Rahmat,%0A%0A` +
+                    `Saya ingin mendaftarkan calon siswa baru dengan data berikut:%0A` +
+                    `*Nama Siswa:* ${nama}%0A` +
+                    `*Asal Sekolah:* ${sekolah}%0A` +
+                    `*Nama Ortu:* ${ortu}%0A` +
+                    `*Nomor HP:* ${hp}%0A%0A` +
+                    `Mohon informasinya lebih lanjut. Terima kasih.`;
+
+                window.open(`https://wa.me/${nomorAdmin}?text=${pesan}`, '_blank');
+            } else {
+                alert("Mohon lengkapi semua data formulir terlebih dahulu.");
+            }
+        }
+    </script>
+    <script src="../js/dynamic_loader.js"></script>
+    <script src="../js/quick_access.js"></script>
+</body>
+
+</html>

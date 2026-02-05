@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BP3NU Raden Rahmat Balongbendo - Sidoarjo</title>
+    <!-- Modern Premium Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- DESIGN SYSTEM & VARIABLES --- */
+        :root {
+            --primary: #006837;
+            /* Emerald Green */
+            --primary-dark: #004d29;
+            --primary-light: #e6f4ea;
+            --accent: #f39c12;
+            /* Golden Orange */
+            --accent-dark: #d35400;
+            --text-main: #2c3e50;
+            --text-muted: #7f8c8d;
+            --white: #ffffff;
+            --bg-body: #f8f9fa;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-main);
+            line-height: 1.7;
+            background-color: var(--bg-body);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .nav-menu li a {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- TOP BAR --- */
+        .top-bar {
+            background-color: #111;
+            color: #bdc3c7;
+            font-size: 0.8rem;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-info span {
+            margin-right: 15px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--white);
+            padding: 25px 0;
+            position: relative;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-area h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        .logo-area p {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .header-tools {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .social-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* --- NAVIGATION --- */
+        .nav-bar {
+            background-color: var(--primary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-menu li a {
+            padding: 18px 25px;
+            display: block;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-menu li a:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .nav-menu .active {
+            background-color: var(--primary-dark);
+            border-bottom: 3px solid var(--accent);
+        }
+
+        /* Dropdown Styles */
+        .nav-menu li {
+            position: relative;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 250px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 10px 10px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1001;
+            animation: fadeInDown 0.3s ease;
+        }
+
+        .nav-menu li:hover .dropdown {
+            display: flex;
+        }
+
+        .dropdown.show {
+            display: flex;
+        }
+
+        .dropdown a {
+            padding: 15px 25px !important;
+            color: var(--text-main) !important;
+            border-bottom: 1px solid #f9f9f9;
+            text-transform: none !important;
+            font-size: 0.85rem !important;
+            letter-spacing: 0 !important;
+            display: flex !important;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dropdown a:hover {
+            background: var(--primary-light) !important;
+            color: var(--primary) !important;
+            padding-left: 30px !important;
+        }
+
+        .dropdown a i {
+            color: var(--accent);
+            width: 20px;
+        }
+
+        .menu-logo {
+            width: 20px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .ppdb-btn {
+            background-color: var(--accent);
+            color: var(--white) !important;
+        }
+
+        .ppdb-btn:hover {
+            background-color: var(--accent-dark) !important;
+        }
+
+        /* --- MOBILE MENU --- */
+        .mobile-toggle {
+            display: none;
+            cursor: pointer;
+            color: var(--white);
+            font-size: 1.5rem;
+            padding: 15px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85);
+            transition: transform 6s ease;
+        }
+
+        .hero:hover .hero-img {
+            transform: scale(1.05);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 700px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-left: 5px solid var(--accent);
+            border-radius: 0 20px 20px 0;
+            color: var(--white);
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50px;
+            font-weight: 700;
+            margin-top: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-btn:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* --- LAYOUT --- */
+        .main-wrapper {
+            display: grid;
+            grid-template-columns: 2.8fr 1.2fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        /* --- CARDS & BOXES --- */
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            padding: 15px 25px;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-header h3 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        /* --- NEWS LIST --- */
+        .news-card {
+            display: flex;
+            gap: 25px;
+            padding: 20px 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .news-card:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .news-img-box {
+            width: 220px;
+            height: 140px;
+            border-radius: 12px;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .news-card:hover .news-img-box img {
+            transform: scale(1.1);
+        }
+
+        .news-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .news-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .news-title:hover {
+            color: var(--accent);
+        }
+
+        .news-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .widget {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+        }
+
+        .widget-title {
+            background: var(--bg-body);
+            padding: 15px 20px;
+            border-bottom: 2px solid var(--primary-light);
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        .widget-content {
+            padding: 20px;
+        }
+
+        /* Login Form Styling */
+        .login-input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 12px;
+            border: 1.5px solid #eee;
+            border-radius: 10px;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .login-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-light);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Quick Links */
+        .link-list li a {
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid #f9f9f9;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .link-list li a:hover {
+            padding-left: 10px;
+            color: var(--primary);
+        }
+
+        .link-list li a i {
+            color: var(--accent);
+            width: 20px;
+        }
+
+        /* --- CHAIRMAN MESSAGE --- */
+        .chairman-box {
+            background: linear-gradient(135deg, var(--primary-light), #fff);
+            padding: 30px;
+            border-radius: 20px;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            border: 1px solid rgba(0, 104, 55, 0.1);
+        }
+
+        .chairman-img {
+            width: 120px;
+            height: 150px;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .chairman-text blockquote {
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .chairman-name {
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #111;
+            color: #bdc3c7;
+            padding: 80px 0 40px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-col p {
+            line-height: 1.8;
+        }
+
+        .copyright {
+            padding-top: 30px;
+            border-top: 1px solid #222;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .main-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--primary);
+                flex-direction: column;
+                padding-top: 80px;
+                transition: 0.5s;
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li a {
+                padding: 15px 30px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .header-inner {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero-content {
+                border-radius: 0;
+                padding: 25px;
+            }
+
+            .news-card {
+                flex-direction: column;
+            }
+
+            .news-img-box {
+                width: 100%;
+                height: 200px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- ADMIN DASHBOARD STYLES --- */
+        .admin-banner {
+            background: #e74c3c;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: 700;
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+            display: none;
+        }
+
+        .admin-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        .edit-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            z-index: 5;
+            display: none;
+        }
+
+        .news-card {
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .map-box {
+            width: 100%;
+            height: 180px;
+            background: #222;
+            border-radius: 12px;
+            margin-top: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .map-box:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .map-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-info">
+                <span><i class="fas fa-phone-alt"></i> (031) 896XXXX</span>
+                <span><i class="fas fa-envelope"></i> info@radenrahmat.sch.id</span>
+            </div>
+            <div class="top-meta">
+                <span id="current-date">Senin, 19 Januari 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo-area">
+                <img src="logo-header.jpg" alt="Logo BP3NU" class="logo-img">
+                <div class="logo-text">
+                    <h1>BP3NU RADEN RAHMAT</h1>
+                    <p>Membangun Masa Depan Dengan Ilmu & Akhlak</p>
+                </div>
+            </div>
+            <div class="header-tools">
+                <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="container nav-inner">
+            <div class="mobile-toggle" id="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-list">
+                <li><a href="#" class="active">Beranda</a></li>
+                <li><a href="#">Profil BP3NU</a></li>
+                <li class="has-dropdown">
+                    <a href="#">Unit Pendidikan <i class="fas fa-chevron-down"
+                            style="font-size: 0.7rem; margin-left: 5px;"></i></a>
+                    <div class="dropdown">
+                        <a href="mi/index.html"><img src="logo-mi.jpg" alt="Logo MI" class="menu-logo"> MI RADEN RAHMAT
+                            BALONGBENDO</a>
+                        <a href="smp/index.html"><img src="logo-smp.jpg" alt="Logo SMP" class="menu-logo"> SMP RADEN
+                            RAHMAT BALONGBENDO</a>
+                        <a href="https://smaradenrahmat.sch.id/sistem/" target="_blank"><img src="logo-sma.png"
+                                alt="Logo SMA" class="menu-logo"> SMAS R RAHMAT Balongbendo</a>
+                    </div>
+                </li>
+                <li><a href="#">Berita & Artikel</a></li>
+                <li><a href="#">Hubungi Kami</a></li>
+                <li class="has-dropdown">
+                    <a href="#" class="ppdb-btn">PENDAFTARAN ONLINE (PPDB) <i class="fas fa-chevron-down"
+                            style="font-size: 0.7rem; margin-left: 5px;"></i></a>
+                    <div class="dropdown">
+                        <a href="https://wa.me/6285730017464" target="_blank"><img src="logo-mi.jpg" alt="Logo MI"
+                                class="menu-logo"> PPDB MI (WA)</a>
+                        <a href="https://wa.me/6285706673560" target="_blank"><img src="logo-smp.jpg" alt="Logo SMP"
+                                class="menu-logo"> PPDB SMP (WA)</a>
+                        <a href="https://wa.me/6285732920200" target="_blank"><img src="logo-sma.png" alt="Logo SMA"
+                                class="menu-logo"> PPDB SMA (WA)</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <img src="hero-bg.jpg" class="hero-img" alt="Gedung Raden Rahmat">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Unggul Dalam Prestasi, Mulia Dalam Budi Pekerti</h2>
+                <p>Bergabunglah bersama kami untuk mewujudkan generasi emas Indonesia yang berwawasan global dan
+                    berbasis karakter Islami.</p>
+                <a href="#" class="hero-btn">Jelajahi Profil <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container main-wrapper">
+
+        <div class="content-area">
+
+            <!-- News Section -->
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-bullhorn"></i> Berita & Kegiatan Terbaru</h3>
+                    <a href="#" style="font-size: 0.8rem; border-bottom: 1px solid;">Lihat Semua</a>
+                </div>
+                <div class="card-body">
+
+                    <div id="news-container">
+                        <!-- News items will be rendered here -->
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Chairman Statement -->
+            <div class="chairman-box">
+                <img src="abah zuhdi.jpeg" class="chairman-img" alt="Drs. H. Moh. Zuhdi">
+                <div class="chairman-text">
+                    <i class="fas fa-quote-left" style="font-size: 2rem; color: var(--accent); opacity: 0.3;"></i>
+                    <blockquote>
+                        "Pendidikan bukan hanya soal transfer ilmu pengetahuan, tapi tentang membentuk jiwa dan
+                        karakter. Kami di Raden Rahmat berkomitmen melahirkan pemimpin masa depan yang bertaqwa dan
+                        kompeten."
+                    </blockquote>
+                    <p class="chairman-name">Drs. H. Moh. Zuhdi</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">Ketua BP3NU Raden Rahmat</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <!-- Login -->
+
+
+            <!-- Units -->
+            <div class="widget">
+                <div class="widget-title">Unit Pendidikan</div>
+                <div class="widget-content" style="padding: 0 20px;">
+                    <ul class="link-list">
+                        <li><a href="mi/index.html"><img src="logo-mi.jpg" alt="Logo MI" class="menu-logo"
+                                    style="margin-right: 12px;"> MI RADEN RAHMAT BALONGBENDO</a></li>
+                        <li><a href="smp/index.html"><img src="logo-smp.jpg" alt="Logo SMP" class="menu-logo"
+                                    style="margin-right: 12px;"> SMP
+                                RADEN RAHMAT BALONGBENDO</a></li>
+                        <li><a href="https://smaradenrahmat.sch.id/sistem/" target="_blank"><img src="logo-sma.png"
+                                    alt="Logo SMA" class="menu-logo" style="margin-right: 12px;"> SMAS R RAHMAT
+                                Balongbendo</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="widget">
+                <div class="widget-title">Hubungi Kami</div>
+                <div class="widget-content">
+                    <p style="margin-bottom: 15px; font-size: 0.9rem;">
+                        <i class="fas fa-map-marker-alt" style="color: var(--accent); margin-right: 10px;"></i>
+                        Jl. Raya Balongbendo No. 123, Balongbendo, Sidoarjo
+                    </p>
+                    <p style="margin-bottom: 15px; font-size: 0.9rem;">
+                        <i class="fas fa-phone-alt" style="color: var(--accent); margin-right: 10px;"></i>
+                        (031) 896XXXX
+                    </p>
+                    <a href="#" class="btn-submit"
+                        style="display: block; text-align: center; background: #25D366; text-decoration: none;">
+                        <i class="fab fa-whatsapp"></i> CHAT WHATSAPP
+                    </a>
+                </div>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4>Tentang BP3NU</h4>
+                <p>BP3NU Raden Rahmat merupakan institusi pendidikan Islam yang berlokasi di Balongbendo Sidoarjo,
+                    berdedikasi
+                    untuk menciptakan lingkungan belajar yang inspiratif dan berintegritas tinggi.</p>
+                <div style="margin-top: 20px;">
+                    <a href="#" style="margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="margin-right: 15px; font-size: 1.2rem;"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Tautan Cepat</h4>
+                <ul class="link-list" style="border: none;">
+                    <li><a href="#" style="color: #bdc3c7; border: none;">Sejarah Singkat</a></li>
+                    <li><a href="#" style="color: #bdc3c7; border: none;">Visi & Misi</a></li>
+                    <li><a href="#" style="color: #bdc3c7; border: none;">Galeri Sekolah</a></li>
+                    <li><a href="#" style="color: #bdc3c7; border: none;">Kalender Akademik</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Lokasi Kami</h4>
+                <a href="https://www.google.com/maps/place/SMA,+SMP,+MI+Raden+Rahmat/@-7.4119629,112.5364405,21z/data=!4m6!3m5!1s0x2e7809304c2775fd:0xb3d1235f15a774aa!8m2!3d-7.4119595!4d112.5364123!16s%2Fg%2F1pzs83qxk?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D"
+                    target="_blank">
+                    <div class="map-box">
+                        <img src="maps-location.png" alt="Peta Lokasi BP3NU Raden Rahmat">
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 BP3NU Raden Rahmat Balongbendo Sidoarjo. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const navList = document.getElementById('nav-list');
+
+        menuBtn.addEventListener('click', () => {
+            navList.classList.toggle('active');
+            const icon = menuBtn.querySelector('i');
+            if (navList.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Dropdown Toggle for Mobile
+        const dropdownToggles = document.querySelectorAll('.has-dropdown > a');
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const dropdown = toggle.nextElementSibling;
+                    dropdown.classList.toggle('show');
+                }
+            });
+        });
+
+        // Current Date Update
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('id-ID', options);
+    </script>
+
+    <!-- Admin Modal -->
+    <div id="admin-modal" class="admin-modal">
+        <div class="modal-content">
+            <h3 id="modal-title">Admin Login</h3>
+            <div id="login-form">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="admin-user" class="form-control" placeholder="Masukkan username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="admin-pass" class="form-control" placeholder="Masukkan password">
+                </div>
+                <button onclick="Admin.login()" class="ppdb-btn" style="width: 100%; border: none;">LOGIN</button>
+            </div>
+            <div id="edit-form" style="display: none;">
+                <input type="hidden" id="edit-index">
+                <div class="form-group">
+                    <label>Judul Berita</label>
+                    <input type="text" id="edit-title" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Gambar / Video Utama</label>
+                    <!-- Tabs for Upload Method -->
+                    <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <button onclick="Admin.switchUpload('local')" id="btn-local" type="button"
+                            style="flex: 1; padding: 5px; border: 1px solid #ddd; border-radius: 4px; background: #e6f4ea; color: #006837; font-size: 0.8rem;">
+                            <i class="fas fa-upload"></i> Upload
+                        </button>
+                        <button onclick="Admin.switchUpload('url')" id="btn-url" type="button"
+                            style="flex: 1; padding: 5px; border: 1px solid #ddd; border-radius: 4px; background: #fff; color: #666; font-size: 0.8rem;">
+                            <i class="fas fa-link"></i> URL
+                        </button>
+                    </div>
+
+                    <!-- Local Upload Input -->
+                    <div id="upload-local">
+                        <input type="file" id="file-upload" class="form-control" accept="image/*,video/*">
+                        <small style="color: #666;">Format: JPG, PNG, MP4. Max 5MB.</small>
+                    </div>
+
+                    <!-- URL Input (Hidden by default) -->
+                    <div id="upload-url" style="display: none;">
+                        <input type="text" id="edit-img" class="form-control"
+                            placeholder="https://example.com/image.jpg">
+                    </div>
+
+                    <!-- Preview -->
+                    <div id="img-preview"
+                        style="margin-top: 10px; height: 100px; background: #f9f9f9; border-radius: 6px; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px dashed #ccc;">
+                        <span style="color: #ccc; font-size: 0.8rem;">Preview Media</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Kutipan Berita</label>
+                    <textarea id="edit-excerpt" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Link Tujuan</label>
+                    <input type="text" id="edit-link" class="form-control" placeholder="#">
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="Admin.save()" class="ppdb-btn" style="flex: 1; border: none;">SIMPAN</button>
+                    <button onclick="Admin.closeModal()" class="ppdb-btn"
+                        style="flex: 1; border: none; background: #95a5a6;">BATAL</button>
+                </div>
+            </div>
+            <div id="profile-form" style="display: none;">
+                <div class="form-group">
+                    <label>Username Baru</label>
+                    <input type="text" id="new-user" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Password Baru</label>
+                    <input type="password" id="new-pass" class="form-control">
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="Admin.updateProfile()" class="ppdb-btn" style="flex: 1; border: none;">SIMPAN
+                        PERUBAHAN</button>
+                    <button onclick="Admin.closeModal()" class="ppdb-btn"
+                        style="flex: 1; border: none; background: #95a5a6;">BATAL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="admin-banner" class="admin-banner">
+        <span id="admin-info">MODE ADMIN AKTIF</span> |
+        <a href="javascript:Admin.openAdd()" style="color: white; font-weight: 700;">+ TAMBAH BERITA</a> |
+        <a href="javascript:Admin.openProfile()" style="color: white; font-weight: 700;">GANTI PROFIL</a> |
+        <a href="javascript:Admin.logout()" style="color: white; text-decoration: underline;">KELUAR</a>
+    </div>
+
+    <script>
+        // Admin Module - SECURE & ENHANCED
+        const Admin = {
+            isLoggedIn: false,
+            currentUser: null,
+            // Pre-hashed passwords (SHA-256)
+            // admin1: 'pass1', admin2: 'pass2'
+            users: {
+                'admin1': 'e6c3da5b206634d7f3f3586d747ffdb36b5c675757b380c6a5fe5c570c714349',
+                'admin2': '1955798993c9d7224269866299f061405e60e87dcb4275034d97645391e604f5'
+            },
+            newsData: [
+                {
+                    title: "Penerimaan Peserta Didik Baru (PPDB) Gelombang 1 Dibuka!",
+                    img: "ppdb.jpg",
+                    date: "19 Jan 2026",
+                    author: "Admin",
+                    excerpt: "BP3NU Raden Rahmat mengumumkan pembukaan pendaftaran Gelombang 1 untuk unit MI, SMP, dan SMA...",
+                    link: "#"
+                },
+                {
+                    title: "Siswa SMP Raden Rahmat Juara 1 Pidato Bahasa Arab",
+                    img: "https://scontent.cdninstagram.com/v/t51.82787-15/591149239_18413024776184571_4704942657799667079_n.webp?_nc_cat=108&ig_cache_key=Mzc4MDA4OTQwNDE4MzQwNDcwMA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjEwODB4ODEwLnNkci5DMyJ9&_nc_ohc=60B65mohT3sQ7kNvwE_NXis&_nc_oc=AdkbT4L_td_Hu8_tyK0rihi0B7qYFfo3nDXCoHO48dTgno6obFmVhrHXFIjqR7T6XXE&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=cnvDAJ4xP8NxdFdBRBjNeQ&oh=00_Afr670c1v7q5i7pTh7eM_037J64evoLo9ARdI5u1MCePvQ&oe=698297FA",
+                    date: "15 Jan 2026",
+                    author: "Humas",
+                    excerpt: "Prestasi membanggakan kembali diraih oleh ananda Ahmad dari kelas IX yang berhasil menyisihkan puluhan peserta...",
+                    link: "#"
+                }
+            ],
+
+            async init() {
+                // Determine API Path (Dynamic for local/production compat)
+                this.apiPath = 'api/news.php';
+                this.uploadPath = 'api/upload.php';
+
+                // Fetch news from Server
+                try {
+                    const response = await fetch(this.apiPath);
+                    if (response.ok) {
+                        this.newsData = await response.json();
+                    } else {
+                        console.error("Failed to load news, falling back to empty.");
+                        this.newsData = [];
+                    }
+                } catch (e) {
+                    console.error("API Error or Offline:", e);
+                    // Fallback to existing logic if file not found (first run)
+                    const savedNews = localStorage.getItem('rr_news_data');
+                    if (savedNews) this.newsData = JSON.parse(savedNews);
+                }
+
+                const savedUsers = localStorage.getItem('rr_admin_users');
+                if (savedUsers) {
+                    this.users = Object.assign({}, this.users, JSON.parse(savedUsers));
+                }
+
+                this.renderNews();
+
+                // Keyboard Trigger: Ctrl + Shift + L
+                window.addEventListener('keydown', (e) => {
+                    if (e.ctrlKey && e.shiftKey && e.key === 'L') {
+                        this.openLogin();
+                    }
+                });
+
+                // Add preview listener
+                document.getElementById('file-upload').addEventListener('change', (e) => {
+                    this.handleFilePreview(e.target.files[0]);
+                });
+
+                document.getElementById('edit-img').addEventListener('input', (e) => {
+                    this.updatePreview(e.target.value);
+                });
+            },
+
+            // Switch Upload Tabs
+            switchUpload(mode) {
+                const btnLocal = document.getElementById('btn-local');
+                const btnUrl = document.getElementById('btn-url');
+                const divLocal = document.getElementById('upload-local');
+                const divUrl = document.getElementById('upload-url');
+
+                if (mode === 'local') {
+                    btnLocal.style.background = '#e6f4ea'; btnLocal.style.color = '#006837';
+                    btnUrl.style.background = '#fff'; btnUrl.style.color = '#666';
+                    divLocal.style.display = 'block';
+                    divUrl.style.display = 'none';
+                    this.uploadMode = 'local';
+                } else {
+                    btnLocal.style.background = '#fff'; btnLocal.style.color = '#666';
+                    btnUrl.style.background = '#e6f4ea'; btnUrl.style.color = '#006837';
+                    divLocal.style.display = 'none';
+                    divUrl.style.display = 'block';
+                    this.uploadMode = 'url';
+                }
+            },
+
+            uploadMode: 'local', // default
+
+            handleFilePreview(file) {
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    this.updatePreview(e.target.result);
+                };
+                reader.readAsDataURL(file);
+            },
+
+            updatePreview(src) {
+                const container = document.getElementById('img-preview');
+                if (!src) {
+                    container.innerHTML = '<span style="color: #ccc; font-size: 0.8rem;">Preview Media</span>';
+                    return;
+                }
+
+                // Basic check if video or image
+                // Note: 'src' from FileReader includes MIME type. URL doesn't necessarily.
+                // We'll assume image for URL unless it ends in .mp4
+
+                const isVideo = src.match(/data:video/) || src.endsWith('.mp4') || src.endsWith('.webm');
+
+                if (isVideo) {
+                    container.innerHTML = `<video src="${src}" style="width:100%; height:100%; object-fit:contain;" controls muted></video>`;
+                } else {
+                    container.innerHTML = `<img src="${src}" style="width:100%; height:100%; object-fit:contain;">`;
+                }
+            },
+
+            // Utility: SHA-256 Hashing
+            async hash(string) {
+                const utf8 = new TextEncoder().encode(string);
+                const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                const hashHex = hashArray.map((bytes) => bytes.toString(16).padStart(2, '0')).join('');
+                return hashHex;
+            },
+
+            // Helper to check media type for rendering
+            renderMedia(url) {
+                if (!url) return '';
+                // Simple extension check
+                const isVideo = url.endsWith('.mp4') || url.endsWith('.webm');
+                if (isVideo) {
+                    return `<video src="${url}" controls autoplay loop muted playsinline style="width:100%; height:100%; object-fit:cover;"></video>`;
+                } else {
+                    return `<img src="${url}" alt="Start your day with... coffee? No, education!">`;
+                }
+            },
+
+            renderNews() {
+                const container = document.getElementById('news-container');
+                container.innerHTML = this.newsData.map((item, index) => `
+                    <div class="news-card">
+                        ${this.isLoggedIn ? `
+                            <div style="position: absolute; top: 10px; right: 10px; z-index: 10; display: flex; gap: 5px;">
+                                <button class="edit-btn" style="position: static; display: block;" onclick="Admin.openEdit(${index})"><i class="fas fa-edit"></i> Edit</button>
+                                <button class="edit-btn" style="position: static; display: block; background: #e74c3c;" onclick="Admin.deleteNews(${index})"><i class="fas fa-trash"></i> Hapus</button>
+                            </div>
+                        ` : ''}
+                        <div class="news-img-box">
+                            ${this.renderMedia(item.img)}
+                        </div>
+                        <div class="news-details">
+                            <div class="news-meta">
+                                <span><i class="far fa-calendar-alt"></i> ${item.date}</span>
+                                <span><i class="far fa-user"></i> ${item.author}</span>
+                            </div>
+                            <a href="${item.link}" class="news-title">${item.title}</a>
+                            <p class="news-excerpt">${item.excerpt}</p>
+                            <a href="${item.link}" style="color: var(--accent); font-weight: 700;">Baca Selengkapnya <i class="fas fa-chevron-right"></i></a>
+                        </div>
+                    </div>
+                `).join('');
+            },
+
+            openLogin() {
+                if (this.isLoggedIn) return;
+                document.getElementById('admin-modal').style.display = 'flex';
+                document.getElementById('modal-title').innerText = 'Admin Login (Secure)';
+                document.getElementById('login-form').style.display = 'block';
+                document.getElementById('edit-form').style.display = 'none';
+                document.getElementById('profile-form').style.display = 'none';
+            },
+
+            async login() {
+                const user = document.getElementById('admin-user').value;
+                const pass = document.getElementById('admin-pass').value;
+
+                if (!user || !pass) {
+                    alert('Username dan Password wajib diisi!');
+                    return;
+                }
+
+                const hashedPass = await this.hash(pass);
+
+                if (this.users[user] && this.users[user] === hashedPass) {
+                    this.isLoggedIn = true;
+                    this.currentUser = user;
+                    this.closeModal();
+                    document.getElementById('admin-info').innerText = `MODE ADMIN AKTIF (${user})`;
+                    document.getElementById('admin-banner').style.display = 'block';
+                    this.renderNews();
+                    alert(`Login Berhasil! Selamat datang, ${user}.`);
+                } else {
+                    alert('Username atau Password salah!');
+                }
+            },
+
+            logout() {
+                if (confirm('Apakah anda yakin ingin keluar dari Mode Admin?')) {
+                    this.isLoggedIn = false;
+                    document.getElementById('admin-banner').style.display = 'none';
+                    this.renderNews();
+                    document.getElementById('admin-user').value = '';
+                    document.getElementById('admin-pass').value = '';
+                }
+            },
+
+            openEdit(index) {
+                const item = this.newsData[index];
+                document.getElementById('admin-modal').style.display = 'flex';
+                document.getElementById('modal-title').innerText = 'Edit Berita';
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('edit-form').style.display = 'block';
+                document.getElementById('profile-form').style.display = 'none';
+
+                document.getElementById('edit-index').value = index;
+                document.getElementById('edit-title').value = item.title;
+
+                // Set logic for img input
+                // If existing image is local (uploads/...), maybe prefer keeping it as is unless new upload
+                // We'll set the URL field regardless, but default view to 'url' mode if it looks like a URL
+                // Actually, let's just reset the upload input
+                document.getElementById('file-upload').value = '';
+                document.getElementById('edit-img').value = item.img;
+                this.updatePreview(item.img);
+
+                // Default to URL mode if there's an existing image so they can see the link
+                // But if they want to upload, they switch tab.
+                // Let's default to 'url' so they see the current value.
+                this.switchUpload('url');
+
+                document.getElementById('edit-excerpt').value = item.excerpt;
+                document.getElementById('edit-link').value = item.link;
+            },
+
+            openAdd() {
+                document.getElementById('admin-modal').style.display = 'flex';
+                document.getElementById('modal-title').innerText = 'Tambah Berita';
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('edit-form').style.display = 'block';
+                document.getElementById('profile-form').style.display = 'none';
+
+                document.getElementById('edit-index').value = 'new';
+                document.getElementById('edit-title').value = '';
+
+                document.getElementById('file-upload').value = '';
+                document.getElementById('edit-img').value = '';
+                this.updatePreview('');
+                this.switchUpload('local'); // Default to upload for new items
+
+                document.getElementById('edit-excerpt').value = '';
+                document.getElementById('edit-link').value = '';
+            },
+
+            openProfile() {
+                document.getElementById('admin-modal').style.display = 'flex';
+                document.getElementById('modal-title').innerText = 'Pengaturan Profil';
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('edit-form').style.display = 'none';
+                document.getElementById('profile-form').style.display = 'block';
+
+                document.getElementById('new-user').value = this.currentUser;
+                document.getElementById('new-pass').value = '';
+            },
+
+            async updateProfile() {
+                const newUser = document.getElementById('new-user').value;
+                const newPass = document.getElementById('new-pass').value;
+
+                if (!newUser || !newPass) return alert('Data tidak boleh kosong!');
+
+                // Remove old user, add new one with HASHED password
+                const oldUser = this.currentUser;
+                const hashedPass = await this.hash(newPass);
+
+                delete this.users[oldUser];
+                this.users[newUser] = hashedPass;
+                this.currentUser = newUser;
+
+                localStorage.setItem('rr_admin_users', JSON.stringify(this.users));
+                document.getElementById('admin-info').innerText = `MODE ADMIN AKTIF (${newUser})`;
+                this.closeModal();
+                alert('Profil berhasil diperbarui! Password telah dienkripsi.');
+            },
+
+            // Helper: Upload File
+            async uploadFile(file) {
+                const formData = new FormData();
+                formData.append('file', file);
+
+                try {
+                    const res = await fetch(this.uploadPath, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        return data.url;
+                    } else {
+                        throw new Error(data.error);
+                    }
+                } catch (e) {
+                    alert("Upload Gagal: " + e.message);
+                    return null;
+                }
+            },
+
+            async save() {
+                const index = document.getElementById('edit-index').value;
+                let finalImgUrl = document.getElementById('edit-img').value; // Default to URL input
+
+                // If Local mode and file selected, upload it
+                if (this.uploadMode === 'local') {
+                    const fileInput = document.getElementById('file-upload');
+                    if (fileInput.files.length > 0) {
+                        const uploadedUrl = await this.uploadFile(fileInput.files[0]);
+                        if (!uploadedUrl) return; // Stop if upload failed
+                        finalImgUrl = uploadedUrl;
+                    }
+                    // If no file selected in local mode, we might want to keep the old image?
+                    // If index != new, and no file, we keep the old one.
+                    // But wait, where is the old one? It's in newsData[index].img
+                    // But if we are in local mode and input is empty, and we hit save, what happens?
+                    // We should probably rely on the hidden URL field being populated?
+                    // No, simpler: check if file provided. If not, use what's in 'edit-img' (which might be old value if we populated it)
+                    // BUT, I didn't populate 'edit-img' with existing value in openAdd().
+                    // In openEdit(), I did: document.getElementById('edit-img').value = item.img;
+                    // So if they strictly switch to local tab and don't pick a file, we want to retain the old image.
+                    // The old image URL is currently sitting in #edit-img.
+                    // So if fileInput is empty, finalImgUrl remains #edit-img value. Correct.
+                }
+
+                const newData = {
+                    title: document.getElementById('edit-title').value,
+                    img: finalImgUrl || 'https://picsum.photos/seed/news/400/250',
+                    excerpt: document.getElementById('edit-excerpt').value,
+                    link: document.getElementById('edit-link').value || '#',
+                    date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }),
+                    author: this.currentUser
+                };
+
+                if (index === 'new') {
+                    this.newsData.unshift(newData);
+                } else {
+                    this.newsData[index] = { ...this.newsData[index], ...newData };
+                }
+
+                // SAVE TO SERVER
+                try {
+                    const res = await fetch(this.apiPath, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ all_news: this.newsData })
+                    });
+                    const result = await res.json();
+
+                    if (result.success) {
+                        // Also update local storage for fallback? No, let's move away from it to avoid confusion.
+                        // But for reliability during transition?
+                        // Nah, let's just stick to server.
+                        localStorage.setItem('rr_news_data', JSON.stringify(this.newsData)); // Keep as backup cache
+                        this.renderNews();
+                        this.closeModal();
+                        alert("Berita berhasil disimpan!");
+                    } else {
+                        alert("Gagal menyimpan ke server: " + (result.error || 'Unknown error'));
+                    }
+                } catch (e) {
+                    alert("Error koneksi server: " + e.message);
+                }
+            },
+
+            deleteNews(index) {
+                if (confirm(`Apakah Anda yakin ingin menghapus berita: "${this.newsData[index].title}"?`)) {
+                    this.newsData.splice(index, 1);
+
+                    // SAVE TO SERVER
+                    fetch(this.apiPath, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ all_news: this.newsData })
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.success) {
+                                localStorage.setItem('rr_news_data', JSON.stringify(this.newsData));
+                                this.renderNews();
+                            } else {
+                                alert("Gagal menghapus.");
+                            }
+                        })
+                        .catch(e => alert("Error koneksi: " + e.message));
+                }
+            },
+
+            closeModal() {
+                document.getElementById('admin-modal').style.display = 'none';
+            }
+
+        };
+
+        Admin.init();
+
+        // Footer Date Update
+        document.getElementById('current-date').innerText = new Date().toLocaleDateString('id-ID', {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+    </script>
+
+    <script src="js/dynamic_loader.js"></script>
+    <script src="js/quick_access.js"></script>
+</body>
+
+</html>
+```

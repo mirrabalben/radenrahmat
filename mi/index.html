@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MI RADEN RAHMAT BALONGBENDO | Official Website</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- PREMIUM DESIGN SYSTEM --- */
+        :root {
+            --primary: #1b5e20;
+            /* Deep Green */
+            --primary-dark: #0d3810;
+            --primary-light: #e8f5e9;
+            --accent: #ffc107;
+            /* Amber/Gold */
+            --accent-dark: #e5af06;
+            --text-main: #2c3e50;
+            --text-muted: #607d8b;
+            --white: #ffffff;
+            --bg-body: #fafafa;
+            --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark)) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding: 15px 0;
+        }
+
+        .navbar-brand img {
+            height: 60px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9) !important;
+            margin: 0 10px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--accent) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 50, 0, 0.75), rgba(0, 50, 0, 0.75)),
+                url('https://images.unsplash.com/photo-1544427920-c49ccfb85579?q=80&w=1470&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(to top, var(--bg-body), transparent);
+        }
+
+        .section-title {
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 6px;
+            background: var(--accent);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        /* PPDB Card */
+        .card-ppdb {
+            border: none;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            background: var(--white);
+        }
+
+        .btn-ppdb {
+            background: linear-gradient(45deg, var(--accent), var(--accent-dark));
+            color: #212529;
+            font-weight: 700;
+            border-radius: 50px;
+            padding: 15px 40px;
+            border: none;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-ppdb:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(243, 156, 18, 0.6);
+            color: #000;
+        }
+
+        /* Icons */
+        .text-success {
+            color: var(--primary) !important;
+        }
+
+        .feature-icon-box {
+            background: var(--primary-light);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .d-flex:hover .feature-icon-box {
+            background: var(--primary);
+            color: var(--white);
+            transform: rotateY(360deg);
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .ig-feed-box {
+            border: 2px dashed #ddd;
+            border-radius: 20px;
+            padding: 40px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .ig-feed-box:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* Form */
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 2px solid #eee;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.15);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="logo_mi_white.png" alt="Logo MI RADEN RAHMAT BALONGBENDO" class="me-3"
+                    style="border-radius: 5px;">
+                <div class="brand-text">
+                    <span class="d-block fw-bold fs-5">MI RADEN RAHMAT</span>
+                    <small class="d-block" style="font-size: 0.7rem; letter-spacing: 1px;">BALONGBENDO -
+                        SIDOARJO</small>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html"><i class="fas fa-arrow-left me-1"></i>
+                            Kembali</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#beranda">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#profil">Profil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#berita">Kegiatan IG</a></li>
+                    <li class="nav-item ms-lg-3"><a class="nav-link btn btn-warning text-dark px-4 fw-bold rounded-pill"
+                            href="#ppdb">PPDB ONLINE</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="beranda" class="hero">
+        <div class="container">
+            <img src="logo_mi_white.png" alt="Logo" height="150" class="mb-4 animate__animated animate__fadeInDown"
+                style="border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+            <h1 class="display-3 fw-bold mb-3">MI RADEN RAHMAT BALONGBENDO</h1>
+            <p class="lead mb-5 fs-4">Mewujudkan Generasi Islami yang Unggul, Cerdas, dan Berakhlakul Karimah.</p>
+            <a href="#ppdb" class="btn btn-ppdb btn-lg">Daftar Sekarang <i class="fas fa-arrow-right ms-2"></i></a>
+        </div>
+    </header>
+
+    <section id="profil" class="py-5">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-md-6">
+                    <h2 class="section-title text-start">Mengenal Madrasah Kami</h2>
+                    <p class="lead">MI RADEN RAHMAT BALONGBENDO hadir sebagai mitra orang tua dalam mendidik putra-putri
+                        menjadi generasi Qur'ani.</p>
+                    <p>Berada di bawah naungan LP Ma'arif NU, kami menerapkan kurikulum terpadu yang menitikberatkan
+                        pada pembentukan karakter Aswaja An-Nahdliyah, kemampuan akademik yang kuat, serta pengembangan
+                        minat bakat siswa.</p>
+                    <div class="mt-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="feature-icon-box"><i class="fas fa-check-circle"></i></div>
+                            <span class="fs-5">Pendidikan Karakter Islami</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="feature-icon-box"><i class="fas fa-laptop-code"></i></div>
+                            <span class="fs-5">Fasilitas Pembelajaran Lengkap</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="feature-icon-box"><i class="fas fa-running"></i></div>
+                            <span class="fs-5">Ekstrakurikuler Beragam (Pramuka, Banjari, Pagar Nusa)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="position-relative">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600"
+                            class="img-fluid rounded-4 shadow-lg" alt="Siswa MI">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="berita" class="py-5 bg-light">
+        <div class="container py-4">
+            <h2 class="section-title">Kabar Terkini</h2>
+            <p class="text-center text-muted mb-5">Ikuti dokumentasi kegiatan harian kami melalui Instagram resmi <br>
+                <a href="https://www.instagram.com/mir.rahmatbalongbendo" target="_blank"
+                    class="text-danger fw-bold text-decoration-none">@mir.rahmatbalongbendo</a>
+            </p>
+
+            <div class="ig-feed-box text-center">
+                <i class="fab fa-instagram fa-4x mb-3 text-danger"></i>
+                <h4 class="fw-bold">Lihat Galeri Kegiatan</h4>
+                <p>Klik tombol di bawah untuk melihat foto dan video kegiatan terbaru siswa-siswi kami.</p>
+                <a href="https://www.instagram.com/mir.rahmatbalongbendo" target="_blank"
+                    class="btn btn-outline-danger px-5 rounded-pill mt-3">Buka Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="ppdb" class="py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card card-ppdb">
+                        <div class="bg-success p-4 text-center text-white">
+                            <h2 class="fw-bold mb-0">Pendaftaran Online 2026/2027</h2>
+                        </div>
+                        <div class="p-4 p-md-5 bg-white">
+                            <form id="formPPDB">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold">Nama Lengkap Anak</label>
+                                        <input type="text" id="namaAnak" class="form-control p-3 border-2"
+                                            placeholder="Nama sesuai akta" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold">Asal Sekolah (TK/RA)</label>
+                                        <input type="text" id="asalSekolah" class="form-control p-3 border-2" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold">Nama Wali Murid</label>
+                                        <input type="text" id="namaWali" class="form-control p-3 border-2" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-bold">Nomor WhatsApp Aktif</label>
+                                        <input type="number" id="noWA" class="form-control p-3 border-2"
+                                            placeholder="08xxxxxxxx" required>
+                                    </div>
+                                    <div class="col-12 mt-4">
+                                        <button type="button" onclick="kirimPendaftaran()"
+                                            class="btn btn-ppdb w-100 py-3 shadow">
+                                            <i class="fab fa-whatsapp me-2"></i> KIRIM FORMULIR VIA WHATSAPP
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-5 col-md-12">
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="logo_mi_white.png" alt="Logo" height="60" class="bg-white rounded-circle p-1 me-3">
+                        <h5 class="fw-bold mb-0">MI RADEN RAHMAT<br>BALONGBENDO</h5>
+                    </div>
+                    <p class="small text-white-50"><i class="fas fa-map-marker-alt me-2"></i> Jl. Mayjen Bambang Yuwono
+                        No.110, Balongbendo, Kec. Balongbendo, Kabupaten Sidoarjo, Jawa Timur 61263.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="fw-bold mb-4">Link Cepat</h6>
+                    <ul class="list-unstyled small text-white-50">
+                        <li class="mb-2"><a href="#profil" class="text-white-50 text-decoration-none">Profil Sekolah</a>
+                        </li>
+                        <li class="mb-2"><a href="#berita" class="text-white-50 text-decoration-none">Update
+                                Kegiatan</a></li>
+                        <li class="mb-2"><a href="#ppdb" class="text-white-50 text-decoration-none">Daftar Online</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 text-md-end">
+                    <h6 class="fw-bold mb-4">Hubungi Kami</h6>
+                    <div class="fs-3 mb-3">
+                        <a href="https://www.facebook.com/MI-Raden-Rahmat-Balongbendo-441915945943488/"
+                            class="text-white me-3" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/mir.rahmatbalongbendo" class="text-white me-3"
+                            target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <p class="small text-white-50">Jam Kerja: 07.00 - 13.00 WIB</p>
+                </div>
+            </div>
+            <hr class="mt-5 border-secondary">
+            <p class="text-center small text-white-50 mb-0">© 2026 MI RADEN RAHMAT BALONGBENDO. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function kirimPendaftaran() {
+            // GANTI NOMOR DI BAWAH INI DENGAN NOMOR WA ADMIN SEKOLAH (awali dengan 62)
+            const noAdmin = "6285730017464";
+
+            const anak = document.getElementById('namaAnak').value;
+            const asal = document.getElementById('asalSekolah').value;
+            const wali = document.getElementById('namaWali').value;
+            const wa = document.getElementById('noWA').value;
+
+            if (anak && wali && wa) {
+                const pesan = `Assalamu'alaikum Admin MI Raden Rahmat Balongbendo,%0A%0A` +
+                    `Saya ingin mendaftarkan calon siswa baru:%0A` +
+                    `*Nama Anak:* ${anak}%0A` +
+                    `*Asal Sekolah:* ${asal}%0A` +
+                    `*Nama Wali:* ${wali}%0A` +
+                    `*No. WhatsApp:* ${wa}%0A%0A` +
+                    `Mohon informasi langkah pendaftaran selanjutnya. Terima kasih.`;
+
+                window.open(`https://wa.me/${noAdmin}?text=${pesan}`, '_blank');
+            } else {
+                alert("Mohon lengkapi formulir pendaftaran!");
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/dynamic_loader.js"></script>
+    <script src="../js/quick_access.js"></script>
+</body>
+
+</html>

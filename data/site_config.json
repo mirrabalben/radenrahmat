@@ -1,0 +1,131 @@
+{
+    "global": {
+        "navbar": [
+            {
+                "text": "Beranda",
+                "link": "..\/index.html",
+                "active": true
+            },
+            {
+                "text": "Profil BP3NU",
+                "link": "pages\/profilbp3nu.html"
+            },
+            {
+                "text": "Unit Pendidikan",
+                "link": "#",
+                "dropdown": [
+                    {
+                        "text": "MI RADEN RAHMAT BALONGBENDO",
+                        "link": "..\/mi\/index.html",
+                        "img": "..\/logo-mi.jpg"
+                    },
+                    {
+                        "text": "SMP RADEN RAHMAT BALONGBENDO",
+                        "link": "..\/smp\/index.html",
+                        "img": "..\/logo-smp.jpg"
+                    },
+                    {
+                        "text": "SMAS R RAHMAT Balongbendo",
+                        "link": "https:\/\/smaradenrahmat.sch.id\/sistem\/",
+                        "img": "..\/logo-sma.png",
+                        "target": "_blank"
+                    }
+                ]
+            },
+            {
+                "text": "Hubungi Kami",
+                "link": "#"
+            }
+        ],
+        "ppdb_btn": {
+            "text": "PENDAFTARAN ONLINE (PPDB)",
+            "dropdown": [
+                {
+                    "text": "PPDB MI (WA)",
+                    "link": "https:\/\/wa.me\/6285730017464",
+                    "img": "..\/logo-mi.jpg"
+                },
+                {
+                    "text": "PPDB SMP (WA)",
+                    "link": "https:\/\/wa.me\/6285706673560",
+                    "img": "..\/logo-smp.jpg"
+                },
+                {
+                    "text": "PPDB SMA (WA)",
+                    "link": "https:\/\/wa.me\/6285732920200",
+                    "img": "..\/logo-sma.png"
+                }
+            ]
+        }
+    },
+    "pages": {
+        "main": {
+            "navbar": [],
+            "hero_title": "Unggul Dalam Prestasi, Mulia Dalam Budi Pekerti",
+            "hero_desc": "Bergabunglah bersama kami untuk mewujudkan generasi emas Indonesia yang berwawasan global dan berbasis karakter Islami.",
+            "hero_bg": "hero-bg.jpg"
+        },
+        "mi": {
+            "navbar": [
+                {
+                    "text": "Kembali",
+                    "link": "..\/index.html",
+                    "icon": "fas fa-arrow-left"
+                },
+                {
+                    "text": "Beranda",
+                    "link": "#beranda"
+                },
+                {
+                    "text": "Profil",
+                    "link": "#profil"
+                },
+                {
+                    "text": "Kegiatan IG",
+                    "link": "#berita"
+                },
+                {
+                    "text": "PPDB ONLINE",
+                    "link": "#ppdb",
+                    "class": "btn btn-warning text-dark px-4 fw-bold rounded-pill"
+                }
+            ],
+            "hero_title": "MI RADEN RAHMAT BALONGBENDO",
+            "hero_desc": "Mewujudkan Generasi Islami yang Unggul, Cerdas, dan Berakhlakul Karimah.",
+            "hero_bg": "..\/uploads\/1770206698_hero-bg.jpg"
+        },
+        "smp": {
+            "navbar": [
+                {
+                    "text": "Beranda",
+                    "link": "#home",
+                    "active": true
+                },
+                {
+                    "text": "Tentang Kami",
+                    "link": "#about"
+                },
+                {
+                    "text": "Kegiatan (IG)",
+                    "link": "#gallery"
+                },
+                {
+                    "text": "PPDB ONLINE",
+                    "link": "#ppdb",
+                    "class": "btn-ppdb-nav",
+                    "icon": "fas fa-file-pen"
+                },
+                {
+                    "text": "Kembali",
+                    "link": "..\/index.html",
+                    "class": "btn btn-outline-dark btn-sm rounded-circle",
+                    "icon": "fas fa-arrow-left",
+                    "iconOnly": true
+                }
+            ],
+            "hero_title": "Generasi Cerdas,Berkarakter & Berprestasi",
+            "hero_desc": "SMP Raden Rahmat Balongbendo berkomitmen mencetak generasi muda yang unggul dalam IPTEK dan kokoh dalam IMTAQ berlandaskan Ahlussunnah Wal Jamaah.",
+            "hero_bg": "..\/uploads\/1770205859_hero-bg.jpg"
+        }
+    }
+}

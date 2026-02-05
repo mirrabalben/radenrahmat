@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BP3NU Super Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .login-card {
+            max-width: 400px;
+            margin: 100px auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            min-height: 100vh;
+            background: #2c3e50;
+            color: white;
+        }
+
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 5px;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 5px;
+        }
+
+        .content-area {
+            padding: 30px;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        .section-header {
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .preview-img {
+            max-height: 100px;
+            border-radius: 5px;
+            margin-top: 5px;
+            border: 1px dashed #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- LOGIN SCREEN -->
+    <div id="login-app" class="container" style="display: none;">
+        <div class="card login-card p-4">
+            <h3 class="text-center mb-4 text-primary fw-bold"><i class="fas fa-shield-alt"></i> Super Admin</h3>
+            <form onsubmit="App.login(event)">
+                <div class="mb-3">
+                    <label>Username</label>
+                    <input type="text" id="user" class="form-control" placeholder="superadmin" required>
+                </div>
+                <div class="mb-3">
+                    <label>Password</label>
+                    <div class="input-group">
+                        <input type="password" id="pass" class="form-control" required>
+                        <button class="btn btn-outline-secondary" type="button" onclick="App.togglePassword()">
+                            <i class="fas fa-eye" id="togglePasswordIcon"></i>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 fw-bold">Masuk Dashboard</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- DASHBOARD SCREEN -->
+    <div id="dashboard-app" class="d-flex" style="display: none !important;">
+        <!-- Sidebar -->
+        <div class="sidebar p-3 d-flex flex-column" style="width: 250px; flex-shrink: 0;">
+            <h4 class="mb-4 ps-2 fw-bold"><i class="fas fa-cogs me-2"></i> BP3NU Admin</h4>
+            <ul class="nav flex-column mb-auto">
+                <li class="nav-item"><a class="nav-link active" href="#" onclick="App.showTab('global')"><i
+                            class="fas fa-globe me-2"></i> Global Menu</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" onclick="App.showTab('main')"><i
+                            class="fas fa-home me-2"></i> Website Utama</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" onclick="App.showTab('mi')"><i
+                            class="fas fa-child me-2"></i> MI Raden Rahmat</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" onclick="App.showTab('smp')"><i
+                            class="fas fa-user-graduate me-2"></i> SMP Raden Rahmat</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" onclick="App.showTab('users')"><i
+                            class="fas fa-users-cog me-2"></i> Manajemen User</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" onclick="App.showTab('builder')"><i
+                            class="fas fa-layer-group me-2"></i> Page Builder</a></li>
+            </ul>
+            <button class="btn btn-danger w-100 mt-3" onclick="App.logout()"><i class="fas fa-sign-out-alt me-2"></i>
+                Keluar</button>
+        </div>
+
+        <!-- Content -->
+        <div class="flex-grow-1 content-area">
+            <div id="alert-box"></div>
+
+            <!-- GLOBAL TAB -->
+            <div id="tab-global" class="tab-content">
+                <h2 class="section-header">Pengaturan Menu Navigasi Global</h2>
+                <div class="card p-4">
+                    <p class="text-muted">Atur link yang muncul di bagian atas semua website.</p>
+                    <div id="navbar-editor"></div>
+                    <button class="btn btn-success mt-3" onclick="App.addNavbarItem()"><i class="fas fa-plus"></i>
+                        Tambah Menu</button>
+                    <hr>
+                    <button class="btn btn-primary btn-lg" onclick="App.saveConfig()"><i class="fas fa-save me-2"></i>
+                        Simpan Perubahan</button>
+                </div>
+            </div>
+
+            <!-- MAIN SITE TAB -->
+            <div id="tab-main" class="tab-content" style="display: none;">
+                <h2 class="section-header">Konten Website Utama</h2>
+                <div class="card p-4">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Hero Title</label>
+                            <input type="text" id="main_hero_title" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Hero Background</label>
+                            <input type="file" class="form-control" onchange="App.uploadFile(this, 'main_hero_bg')">
+                            <input type="hidden" id="main_hero_bg_val">
+                            <img id="main_hero_bg_preview" class="preview-img" src="">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label fw-bold">Hero Description</label>
+                            <textarea id="main_hero_desc" class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="App.saveConfig()"><i class="fas fa-save me-2"></i> Simpan
+                        Perubahan</button>
+                </div>
+            </div>
+
+            <!-- MI SITE TAB -->
+            <div id="tab-mi" class="tab-content" style="display: none;">
+                <h2 class="section-header">Website MI Raden Rahmat</h2>
+
+                <!-- Live Preview -->
+                <div class="card p-3 mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h5 class="mb-0"><i class="fas fa-eye me-2"></i>Preview Website</h5>
+                        <button class="btn btn-sm btn-outline-primary"
+                            onclick="document.getElementById('mi-preview').src = document.getElementById('mi-preview').src">
+                            <i class="fas fa-sync-alt me-1"></i>Refresh Preview
+                        </button>
+                    </div>
+                    <iframe id="mi-preview" src="../mi/index.html"
+                        style="width: 100%; height: 500px; border: 2px solid #ddd; border-radius: 8px;"></iframe>
+                </div>
+
+                <!-- MI Navbar Editor -->
+                <div class="card p-4 mb-4">
+                    <h4 class="mb-3"><i class="fas fa-bars me-2"></i>Menu Navigasi</h4>
+                    <p class="text-muted">Atur menu yang muncul di bagian atas website MI.</p>
+                    <div id="mi-navbar-editor"></div>
+                    <button class="btn btn-success mt-3" onclick="App.addNavbarItem('mi')"><i class="fas fa-plus"></i>
+                        Tambah Menu Baru</button>
+                </div>
+
+                <!-- MI Hero Section -->
+                <div class="card p-4">
+                    <h4 class="mb-3"><i class="fas fa-image me-2"></i>Bagian Header Utama</h4>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Judul Besar</label>
+                            <input type="text" id="mi_hero_title" class="form-control"
+                                placeholder="Contoh: MI RADEN RAHMAT BALONGBENDO">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Gambar Latar Belakang</label>
+                            <input type="file" class="form-control" onchange="App.uploadFile(this, 'mi_hero_bg')"
+                                accept="image/*">
+                            <input type="hidden" id="mi_hero_bg_val">
+                            <img id="mi_hero_bg_preview" class="preview-img" src="" alt="Preview gambar">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label fw-bold">Deskripsi / Tagline</label>
+                            <textarea id="mi_hero_desc" class="form-control" rows="3"
+                                placeholder="Contoh: Mewujudkan Generasi Islami yang Unggul..."></textarea>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-lg" onclick="App.saveConfig()"><i class="fas fa-save me-2"></i>
+                        Simpan Semua Perubahan</button>
+                </div>
+            </div>
+
+            <!-- SMP SITE TAB -->
+            <div id="tab-smp" class="tab-content" style="display: none;">
+                <h2 class="section-header">Website SMP Raden Rahmat</h2>
+
+                <!-- Live Preview -->
+                <div class="card p-3 mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h5 class="mb-0"><i class="fas fa-eye me-2"></i>Preview Website</h5>
+                        <button class="btn btn-sm btn-outline-primary"
+                            onclick="document.getElementById('smp-preview').src = document.getElementById('smp-preview').src">
+                            <i class="fas fa-sync-alt me-1"></i>Refresh Preview
+                        </button>
+                    </div>
+                    <iframe id="smp-preview" src="../smp/index.html"
+                        style="width: 100%; height: 500px; border: 2px solid #ddd; border-radius: 8px;"></iframe>
+                </div>
+
+                <!-- SMP Navbar Editor -->
+                <div class="card p-4 mb-4">
+                    <h4 class="mb-3"><i class="fas fa-bars me-2"></i>Menu Navigasi</h4>
+                    <p class="text-muted">Atur menu yang muncul di bagian atas website SMP.</p>
+                    <div id="smp-navbar-editor"></div>
+                    <button class="btn btn-success mt-3" onclick="App.addNavbarItem('smp')"><i class="fas fa-plus"></i>
+                        Tambah Menu Baru</button>
+                </div>
+
+                <!-- SMP Hero Section -->
+                <div class="card p-4">
+                    <h4 class="mb-3"><i class="fas fa-image me-2"></i>Bagian Header Utama</h4>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Judul Besar</label>
+                            <input type="text" id="smp_hero_title" class="form-control"
+                                placeholder="Contoh: Generasi Cerdas, Berkarakter & Berprestasi">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Gambar Latar Belakang</label>
+                            <input type="file" class="form-control" onchange="App.uploadFile(this, 'smp_hero_bg')"
+                                accept="image/*">
+                            <input type="hidden" id="smp_hero_bg_val">
+                            <img id="smp_hero_bg_preview" class="preview-img" src="" alt="Preview gambar">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label fw-bold">Deskripsi / Tagline</label>
+                            <textarea id="smp_hero_desc" class="form-control" rows="3"
+                                placeholder="Contoh: SMP Raden Rahmat berkomitmen mencetak generasi..."></textarea>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-lg" onclick="App.saveConfig()"><i class="fas fa-save me-2"></i>
+                        Simpan Semua Perubahan</button>
+                </div>
+            </div>
+
+            <!-- USERS TAB -->
+            <div id="tab-users" class="tab-content" style="display: none;">
+                <h2 class="section-header">Manajemen Pengguna</h2>
+                <div class="card p-4">
+                    <div class="mb-4">
+                        <h4>Ganti Password</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Pilih User</label>
+                                <select id="user-select" class="form-control mb-2"></select>
+                                <input type="password" id="new-user-pass" class="form-control mb-2"
+                                    placeholder="Password Baru">
+                                <button class="btn btn-warning" onclick="App.changePassword()">Ganti Password</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BUILDER TAB -->
+            <div id="tab-builder" class="tab-content" style="display: none;">
+                <h2 class="section-header">Page Builder</h2>
+                <div class="card p-4">
+                    <p class="text-muted">Buat halaman baru dengan template standar.</p>
+                    <div class="mb-3">
+                        <label>Nama Halaman (Slug)</label>
+                        <input type="text" id="page-slug" class="form-control"
+                            placeholder="contoh: kesiswaan (akan menjadi kesiswaan.html)">
+                    </div>
+                    <div class="mb-3">
+                        <label>Judul Halaman</label>
+                        <input type="text" id="page-title" class="form-control" placeholder="Judul di Tab Browser">
+                    </div>
+                    <div class="mb-3">
+                        <label>Hero Title</label>
+                        <input type="text" id="page-hero-title" class="form-control">
+                    </div>
+                    <button class="btn btn-success" onclick="App.createPage()"><i class="fas fa-plus-circle me-2"></i>
+                        Buat Halaman</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const App = {
+            config: {},
+
+            async init() {
+                // Check Login Status
+                const res = await fetch('../api/auth.php?action=check');
+                const data = await res.json();
+
+                if (data.logged_in) {
+                    this.showDashboard();
+                } else {
+                    document.getElementById('login-app').style.display = 'block';
+                }
+            },
+
+            async login(e) {
+                e.preventDefault();
+                const user = document.getElementById('user').value;
+                const pass = document.getElementById('pass').value;
+
+                try {
+                    const res = await fetch('../api/auth.php?action=login', {
+                        method: 'POST',
+                        body: JSON.stringify({ user, pass })
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        this.showDashboard();
+                    } else {
+                        alert(data.message);
+                    }
+                } catch (err) { alert("Login Error"); }
+            },
+
+            async logout() {
+                await fetch('../api/auth.php?action=logout');
+                sessionStorage.clear();
+                window.location.href = '../index.html';
+            },
+
+            async showDashboard() {
+                document.getElementById('login-app').style.display = 'none';
+                document.getElementById('dashboard-app').style.removeProperty('display');
+
+                // Fetch Configuration
+                const res = await fetch('../api/admin_api.php');
+                this.config = await res.json();
+
+                this.render();
+                this.loadUsers();
+            },
+
+            async loadUsers() {
+                try {
+                    const res = await fetch('../api/auth.php?action=list_users');
+                    const data = await res.json();
+                    if (data.success && data.users) {
+                        const select = document.getElementById('user-select');
+                        if (select) {
+                            select.innerHTML = data.users.map(u => `<option value="${u}">${u}</option>`).join('');
+                        }
+                    }
+                } catch (e) { console.error("Failed to load users"); }
+            },
+
+            async changePassword() {
+                const username = document.getElementById('user-select').value;
+                const new_pass = document.getElementById('new-user-pass').value;
+                if (!new_pass) return alert("Password tidak boleh kosong");
+
+                try {
+                    const res = await fetch('../api/auth.php?action=update_pass', {
+                        method: 'POST',
+                        body: JSON.stringify({ username, new_pass })
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        alert("Password berhasil diubah!");
+                        document.getElementById('new-user-pass').value = '';
+                    } else {
+                        alert("Gagal: " + data.message);
+                    }
+                } catch (e) { alert("Error changing password"); }
+            },
+
+            async createPage() {
+                const slug = document.getElementById('page-slug').value.replace(/[^a-z0-9-_]/gi, '').toLowerCase();
+                const title = document.getElementById('page-title').value;
+                const heroTitle = document.getElementById('page-hero-title').value;
+
+                if (!slug || !title) return alert("Data tidak lengkap!");
+
+                try {
+                    const res = await fetch('../api/admin_api.php?action=create_page', {
+                        method: 'POST',
+                        body: JSON.stringify({ slug, title, heroTitle })
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        alert("Halaman berhasil dibuat: " + slug + ".html");
+                        // Add to navbar automatically? Optional.
+                        if (confirm("Tambahkan ke menu navigasi?")) {
+                            this.config.global.navbar.push({ text: title, link: "pages/" + slug + ".html" });
+                            this.render(); // Re-render navbar editor
+                            this.saveConfig(); // Save immediately
+                        }
+                    } else {
+                        alert("Gagal membuat halaman: " + data.message);
+                    }
+                } catch (e) { alert("Error creating page"); }
+            },
+
+            render() {
+                // Render Navbar Editor
+                const container = document.getElementById('navbar-editor');
+                if (container) {
+                    container.innerHTML = '';
+                    this.config.global.navbar.forEach((item, index) => {
+                        container.innerHTML += `
+                            <div class="input-group mb-2">
+                                <span class="input-group-text"><i class="fas fa-bars"></i></span>
+                                <input type="text" class="form-control" value="${item.text}" onchange="App.updateNavbar(${index}, 'text', this.value)" placeholder="Label">
+                                <input type="text" class="form-control" value="${item.link}" onchange="App.updateNavbar(${index}, 'link', this.value)" placeholder="Link URL">
+                                <button class="btn btn-danger" onclick="App.removeNavbarItem(${index})"><i class="fas fa-trash"></i></button>
+                            </div>
+                        `;
+                    });
+                }
+
+                // Render MI and SMP Navbar Editors
+                this.renderPageNavbar('mi');
+                this.renderPageNavbar('smp');
+
+                // Render Pages Config
+                ['main', 'mi', 'smp'].forEach(page => {
+                    if (this.config.pages[page]) {
+                        const titleEl = document.getElementById(`${page}_hero_title`);
+                        if (titleEl) {
+                            titleEl.value = this.config.pages[page].hero_title || '';
+                            document.getElementById(`${page}_hero_desc`).value = this.config.pages[page].hero_desc || '';
+
+                            const bgVal = this.config.pages[page].hero_bg || '';
+                            document.getElementById(`${page}_hero_bg_val`).value = bgVal;
+
+                            let finalSrc = bgVal;
+                            if (!bgVal.startsWith('http') && !bgVal.startsWith('../')) {
+                                finalSrc = `../${bgVal}`;
+                            }
+                            document.getElementById(`${page}_hero_bg_preview`).src = finalSrc;
+                        }
+                    }
+                });
+            },
+
+            renderPageNavbar(page) {
+                const container = document.getElementById(`${page}-navbar-editor`);
+                if (!container) return;
+
+                const navbar = this.config.pages[page]?.navbar || [];
+                container.innerHTML = '';
+
+                navbar.forEach((item, index) => {
+                    container.innerHTML += `
+                        <div class="card mb-2 p-3">
+                            <div class="row g-2">
+                                <div class="col-md-5">
+                                    <label class="form-label small text-muted mb-1">Nama Menu</label>
+                                    <input type="text" class="form-control" value="${item.text || ''}" 
+                                        onchange="App.updatePageNavbar('${page}', ${index}, 'text', this.value)" 
+                                        placeholder="Contoh: Beranda, Profil, dll">
+                                </div>
+                                <div class="col-md-5">
+                                    <label class="form-label small text-muted mb-1">Tujuan Link</label>
+                                    <input type="text" class="form-control" value="${item.link || ''}" 
+                                        onchange="App.updatePageNavbar('${page}', ${index}, 'link', this.value)" 
+                                        placeholder="Contoh: #beranda atau https://...">
+                                </div>
+                                <div class="col-md-2 d-flex align-items-end">
+                                    <button class="btn btn-danger w-100" onclick="App.removePageNavbarItem('${page}', ${index})" title="Hapus menu ini">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            },
+
+            updatePageNavbar(page, index, field, value) {
+                if (!this.config.pages[page].navbar) this.config.pages[page].navbar = [];
+                this.config.pages[page].navbar[index][field] = value;
+            },
+
+            removePageNavbarItem(page, index) {
+                if (confirm("Hapus menu ini?")) {
+                    this.config.pages[page].navbar.splice(index, 1);
+                    this.renderPageNavbar(page);
+                }
+            },
+
+            updateNavbar(index, field, value) {
+                this.config.global.navbar[index][field] = value;
+            },
+
+            addNavbarItem(page) {
+                if (!page || page === 'global') {
+                    // Global navbar
+                    this.config.global.navbar.push({ text: "Menu Baru", link: "#" });
+                    this.render();
+                } else {
+                    // Page-specific navbar
+                    if (!this.config.pages[page].navbar) this.config.pages[page].navbar = [];
+                    this.config.pages[page].navbar.push({ text: "Menu Baru", link: "#" });
+                    this.renderPageNavbar(page);
+                }
+            },
+
+            removeNavbarItem(index) {
+                if (confirm("Hapus menu ini?")) {
+                    this.config.global.navbar.splice(index, 1);
+                    this.render();
+                }
+            },
+
+            async uploadFile(input, fieldId) {
+                const file = input.files[0];
+                if (!file) return;
+
+                const formData = new FormData();
+                formData.append('file', file);
+
+                try {
+                    const res = await fetch('../api/admin_api.php', { method: 'POST', body: formData });
+                    const data = await res.json();
+                    if (data.success) {
+                        // Update Config Value
+                        document.getElementById(`${fieldId}_val`).value = data.url;
+                        document.getElementById(`${fieldId}_preview`).src = data.url;
+
+                        // Update internal config object immediately
+                        const [page, section, type] = fieldId.split('_'); // e.g. main_hero_bg
+                        this.config.pages[page][`${section}_${type}`] = data.url;
+                    } else {
+                        alert("Upload Gagal: " + data.message);
+                    }
+                } catch (e) { alert("Error Uploading"); }
+            },
+
+            async saveConfig() {
+                // Gather values from Main, MI, SMP forms into config object
+                ['main', 'mi', 'smp'].forEach(page => {
+                    const titleEl = document.getElementById(`${page}_hero_title`);
+                    if (titleEl) {
+                        this.config.pages[page].hero_title = titleEl.value;
+                        this.config.pages[page].hero_desc = document.getElementById(`${page}_hero_desc`).value;
+                        const bgVal = document.getElementById(`${page}_hero_bg_val`).value;
+                        this.config.pages[page].hero_bg = bgVal;
+                    }
+                });
+
+                try {
+                    const res = await fetch('../api/admin_api.php', {
+                        method: 'POST',
+                        body: JSON.stringify(this.config)
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        alert("Pengaturan Berhasil Disimpan!");
+                    } else {
+                        alert("Gagal menyimpan.");
+                    }
+                } catch (e) { alert("Error Saving"); }
+            },
+
+            togglePassword() {
+                const passInput = document.getElementById('pass');
+                const icon = document.getElementById('togglePasswordIcon');
+
+                if (passInput.type === 'password') {
+                    passInput.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    passInput.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            },
+
+            showTab(tabName) {
+                document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+                document.getElementById(`tab-${tabName}`).style.display = 'block';
+
+                document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+                event.target.classList.add('active'); // simplified active state
+            }
+        };
+
+        App.init();
+    </script>
+</body>
+
+</html>
